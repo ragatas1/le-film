@@ -8,15 +8,20 @@ public class JeremyScript : MonoBehaviour
 {
     [SerializeField] Transform player;
     [SerializeField] Rigidbody2D rb;
+    [SerializeField] GameObject bullet;
     float playerDistance;
     [SerializeField] float targetDistance;
     [SerializeField] float ishRange;
     [SerializeField] float moveSpeed;
     int horizontalModifier;
     int verticalDirection;
-    public float horizontalDirection;
-    public float x;
-    public float y;
+    float horizontalDirection;
+    int shellsLeft;
+    bool shootin;
+    bool reloadin;
+    [SerializeField] float betweenShots;
+    [SerializeField] float shootDistance;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -30,24 +35,25 @@ public class JeremyScript : MonoBehaviour
         playerDistance = Vector2.Distance(player.position, transform.position);
         if (playerDistance > targetDistance+ishRange) 
         {
-            aproach();
-            //around();
             verticalDirection = 1;
             horizontalModifier = 1;
         }
         else if (playerDistance < targetDistance - ishRange)
         {
-            aproach();
             verticalDirection = -1;
-            horizontalModifier = 1;
+            horizontalModifier = 0;
         }
         else
         {
+            verticalDirection = 0;
             horizontalModifier = 2;
-            around();
+        }
+        if (playerDistance <shootDistance)
+        {
+            shoot();
         }
         turn();
-
+        move();
     }
     void turn()
     {
@@ -55,13 +61,41 @@ public class JeremyScript : MonoBehaviour
         var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
     }
-    void around()
+    void move()
     {
-        rb.MovePosition(transform.position + transform.right * moveSpeed * horizontalDirection * horizontalModifier * Time.deltaTime);
+        rb.MovePosition(transform.position + (transform.right * moveSpeed * horizontalDirection * horizontalModifier)+ (transform.up * moveSpeed * verticalDirection));
     }
-    void aproach()
+    void shoot()
     {
-        rb.MovePosition(transform.position+transform.up*moveSpeed* verticalDirection * Time.deltaTime);
+        if (!shootin)
+        {
+            if (shellsLeft > 0)
+            {
+                StartCoroutine(shooting());
+            }
+            else
+            {
+                if (!reloadin)
+                {
+                    StartCoroutine(reload());
+                }
+            }
+        }
+    }
+    IEnumerator shooting()
+    {
+        shootin = true;
+        Instantiate(bullet, transform.position, transform.rotation);
+        shellsLeft = shellsLeft - 1;
+        yield return new WaitForSeconds(betweenShots);
+        shootin = false;
+    }
+    IEnumerator reload()
+    {
+        reloadin = true;
+        yield return new WaitForSeconds(2.5f);
+        shellsLeft = 8;
+        reloadin = false;
     }
 
     IEnumerator changeDirection()
