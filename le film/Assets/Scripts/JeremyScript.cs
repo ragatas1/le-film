@@ -14,7 +14,9 @@ public class JeremyScript : MonoBehaviour
     [SerializeField] float moveSpeed;
     int horizontalModifier;
     int verticalDirection;
-    float horizontalDirection;
+    public float horizontalDirection;
+    public float x;
+    public float y;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,10 +26,12 @@ public class JeremyScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         playerDistance = Vector2.Distance(player.position, transform.position);
         if (playerDistance > targetDistance+ishRange) 
         {
             aproach();
+            //around();
             verticalDirection = 1;
             horizontalModifier = 1;
         }
@@ -43,6 +47,7 @@ public class JeremyScript : MonoBehaviour
             around();
         }
         turn();
+
     }
     void turn()
     {
@@ -52,15 +57,16 @@ public class JeremyScript : MonoBehaviour
     }
     void around()
     {
-        rb.MovePosition(transform.position + transform.right * moveSpeed * horizontalDirection * Time.deltaTime);
+        rb.MovePosition(transform.position + transform.right * moveSpeed * horizontalDirection * horizontalModifier * Time.deltaTime);
     }
     void aproach()
     {
         rb.MovePosition(transform.position+transform.up*moveSpeed* verticalDirection * Time.deltaTime);
     }
+
     IEnumerator changeDirection()
     {
-        horizontalDirection = Random.Range(-1, 1);
+        horizontalDirection = Random.Range(-1f, 1f);
         yield return new WaitForSeconds(2);
         StartCoroutine(changeDirection());
     }
