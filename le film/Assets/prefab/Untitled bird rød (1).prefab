@@ -101,7 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scene: Em
   rb: {fileID: 5302760792845882545}
-  speed: 5000
+  speed: 2000
   deathDistance: 5
 --- !u!50 &5302760792845882545
 Rigidbody2D:

@@ -2,10 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 using Random = UnityEngine.Random;
 
 public class JeremyScript : MonoBehaviour
 {
+    [SerializeField] Animator jeranim;
+    [SerializeField] Animator gunanim;
+    [SerializeField] Transform jeremy;
     [SerializeField] Transform player;
     [SerializeField] Rigidbody2D rb;
     [SerializeField] GameObject bullet;
@@ -21,6 +25,7 @@ public class JeremyScript : MonoBehaviour
     bool reloadin;
     [SerializeField] float betweenShots;
     [SerializeField] float shootDistance;
+    public float check;
     
     // Start is called before the first frame update
     void Start()
@@ -55,13 +60,35 @@ public class JeremyScript : MonoBehaviour
             }
             turn();
             move();
+            animate();
         }
+        jeremy.position = transform.position;
     }
     void turn()
     {
         var dir = player.position - transform.position;
         var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
+        check = angle;
+    }
+    void animate()
+    {
+        if (check < 45 && check > -45)
+        {
+            jeranim.SetInteger("direction", 2);
+            gunanim.SetInteger("direction", 2);
+        }
+        else if (check > 135 || check < -135)
+        {
+            jeranim.SetInteger("direction", 1);
+            gunanim.SetInteger("direction", 1);
+        }
+        else
+        {
+            jeranim.SetInteger("direction", 0);
+            gunanim.SetInteger("direction", 0);
+        }
+        jeranim.SetBool("reload", reloadin);
     }
     void move()
     {
