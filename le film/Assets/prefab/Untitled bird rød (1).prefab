@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6427529492334053626}
   - component: {fileID: 5302760792845882545}
   - component: {fileID: 471213076913345182}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: "Untitled bird r\xF8d (1)"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
