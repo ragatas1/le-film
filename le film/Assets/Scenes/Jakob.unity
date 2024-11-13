@@ -239,7 +239,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1958601916}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &640860468
@@ -254,10 +255,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 900215ab3ee025b4d963c00562f91667, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
+  moveSpeed: 7
   rb: {fileID: 640860470}
   anim: {fileID: 640860472}
-  rollingSpeed: 30
+  rollingSpeed: 40
 --- !u!50 &640860470
 Rigidbody2D:
   serializedVersion: 4
@@ -1324,7 +1325,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 640860467}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1958601917
 MonoBehaviour:
@@ -1374,7 +1375,6 @@ MonoBehaviour:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 1958601916}
   - {fileID: 640860467}
   - {fileID: 1101141692}
   - {fileID: 1668900416}

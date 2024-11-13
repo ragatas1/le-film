@@ -46,7 +46,7 @@ public class PlayerMovement : MonoBehaviour
                     anim.SetBool("Walking", false);
                 }
 
-                if (Input.GetKeyDown(KeyCode.Space))
+                if (Input.GetButtonDown("roll"))
                 {
                     rollDir = new Vector3(movement.x, movement.y).normalized;
                     rollSpeed = rollingSpeed;
@@ -55,7 +55,7 @@ public class PlayerMovement : MonoBehaviour
                 break;
             case State.Rolling:
                 state = State.Rolling;
-                float rollspeedDropMultiplier = 5;
+                float rollspeedDropMultiplier = 10;
                 rollSpeed -= rollSpeed * rollspeedDropMultiplier * Time.deltaTime;
                 float rollspeedMinimum = 5f;
                 if (rollSpeed < rollspeedMinimum)
@@ -78,7 +78,6 @@ public class PlayerMovement : MonoBehaviour
                 break;
             case State.Rolling:
                 rb.velocity = rollDir * rollSpeed;
-                Debug.Log("im rollin");
                 break;
         }
     }    
