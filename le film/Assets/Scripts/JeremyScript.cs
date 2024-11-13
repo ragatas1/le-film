@@ -7,6 +7,7 @@ using Random = UnityEngine.Random;
 
 public class JeremyScript : MonoBehaviour
 {
+    [SerializeField] SpriteRenderer sprite;
     [SerializeField] Animator jeranim;
     [SerializeField] Animator gunanim;
     [SerializeField] Transform jeremy;
@@ -77,16 +78,26 @@ public class JeremyScript : MonoBehaviour
         {
             jeranim.SetInteger("direction", 2);
             gunanim.SetInteger("direction", 2);
+            sprite.sortingOrder = 2;
         }
         else if (check > 135 || check < -135)
         {
             jeranim.SetInteger("direction", 1);
             gunanim.SetInteger("direction", 1);
+            sprite.sortingOrder = 2;
         }
         else
         {
             jeranim.SetInteger("direction", 0);
             gunanim.SetInteger("direction", 0);
+            if (check > 0)
+            {
+                sprite.sortingOrder = 0;
+            }
+            else
+            {
+                sprite.sortingOrder = 2;
+            }
         }
         jeranim.SetBool("reload", reloadin);
     }

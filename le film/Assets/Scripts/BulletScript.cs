@@ -16,6 +16,7 @@ public class BulletScript : MonoBehaviour
     {
         rb.AddForce(transform.up*speed);
         spawnPosition = transform.position;
+        StartCoroutine(die());
     }
 
     // Update is called once per frame
@@ -34,5 +35,10 @@ public class BulletScript : MonoBehaviour
             Debug.Log("shot");
             //SceneManager.LoadScene(scene);
         }
+    }
+    IEnumerator die()
+    {
+        yield return new WaitForSeconds(5);
+        Destroy(gameObject);
     }
 }
