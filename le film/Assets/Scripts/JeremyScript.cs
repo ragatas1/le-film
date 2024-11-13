@@ -31,29 +31,31 @@ public class JeremyScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        playerDistance = Vector2.Distance(player.position, transform.position);
-        if (playerDistance > targetDistance+ishRange) 
+        if (!reloadin)
         {
-            verticalDirection = 1;
-            horizontalModifier = 1;
+            playerDistance = Vector2.Distance(player.position, transform.position);
+            if (playerDistance > targetDistance + ishRange)
+            {
+                verticalDirection = 1;
+                horizontalModifier = 1;
+            }
+            else if (playerDistance < targetDistance - ishRange)
+            {
+                verticalDirection = -1;
+                horizontalModifier = 0;
+            }
+            else
+            {
+                verticalDirection = 0;
+                horizontalModifier = 2;
+            }
+            if (playerDistance < shootDistance)
+            {
+                shoot();
+            }
+            turn();
+            move();
         }
-        else if (playerDistance < targetDistance - ishRange)
-        {
-            verticalDirection = -1;
-            horizontalModifier = 0;
-        }
-        else
-        {
-            verticalDirection = 0;
-            horizontalModifier = 2;
-        }
-        if (playerDistance <shootDistance)
-        {
-            shoot();
-        }
-        turn();
-        move();
     }
     void turn()
     {
@@ -71,7 +73,9 @@ public class JeremyScript : MonoBehaviour
         {
             if (shellsLeft > 0)
             {
+
                 StartCoroutine(shooting());
+
             }
             else
             {
@@ -85,13 +89,17 @@ public class JeremyScript : MonoBehaviour
     IEnumerator shooting()
     {
         shootin = true;
-        Instantiate(bullet, transform.position, transform.rotation);
         shellsLeft = shellsLeft - 1;
-        yield return new WaitForSeconds(betweenShots);
+        yield return new WaitForSeconds(betweenShots-0.68f/*this is the length of the shotgun cock sound*/);
+        AudioManager.Play("cock");
+        yield return new WaitForSeconds(0.68f);
+        Instantiate(bullet, transform.position, transform.rotation);
+        AudioManager.Play("shoot");
         shootin = false;
     }
     IEnumerator reload()
     {
+        AudioManager.Play("reload");
         reloadin = true;
         yield return new WaitForSeconds(2.5f);
         shellsLeft = 8;
