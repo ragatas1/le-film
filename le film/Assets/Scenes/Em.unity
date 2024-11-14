@@ -138,7 +138,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!328 &52522266
 VideoPlayer:
   m_ObjectHideFlags: 0
@@ -923,8 +923,8 @@ MonoBehaviour:
   rb: {fileID: 1008207641}
   bullet: {fileID: 7316625942071012058, guid: 3446c8dd571aacc45be291c1f697bcd3, type: 3}
   circle: {fileID: 1008207643}
-  entranceTime: 2
-  stopTime: 10
+  entranceTime: 45
+  stopTime: 148
   moveSpeed: 0.1
   targetDistance: 3
   ishRange: 0.5
