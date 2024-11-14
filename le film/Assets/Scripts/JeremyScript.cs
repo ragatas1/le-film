@@ -167,6 +167,8 @@ public class JeremyScript : MonoBehaviour
         StopCoroutine(changeDirection());
         StopCoroutine(shooting());
         AudioManager.Stop("reload");
+        rb.rotation = reloadRotation;
+        transform.position = reloadPosition;
     }
     IEnumerator shooting()
     {
