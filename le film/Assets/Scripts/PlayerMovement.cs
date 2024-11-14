@@ -15,7 +15,9 @@ public class PlayerMovement : MonoBehaviour
 
     public Rigidbody2D rb;
     public Animator anim;
-    private Vector3 rollDir;
+    private Vector2 rollDir;
+
+
     private State state;
     float rollSpeed;
     public float rollingSpeed;
@@ -30,6 +32,7 @@ public class PlayerMovement : MonoBehaviour
     }
     void Update()
     {
+
         switch (state)
         {
             case State.Normal:
@@ -48,10 +51,14 @@ public class PlayerMovement : MonoBehaviour
 
                 if (Input.GetButtonDown("roll"))
                 {
-                    rollDir = new Vector3(movement.x, movement.y).normalized;
+                    rollDir = new Vector2(movement.x, movement.y).normalized;
                     rollSpeed = rollingSpeed;
                     state = State.Rolling;
+
                 }
+                else
+                    rollDir = Vector2.zero;
+                
                 break;
             case State.Rolling:
                 state = State.Rolling;
@@ -64,8 +71,11 @@ public class PlayerMovement : MonoBehaviour
                 }
 
                 break;
-        }
 
+            
+        }
+        anim.SetFloat("RollX", rollDir.x);
+        anim.SetFloat("RollY", rollDir.y);
 
     }
 
@@ -78,6 +88,10 @@ public class PlayerMovement : MonoBehaviour
                 break;
             case State.Rolling:
                 rb.velocity = rollDir * rollSpeed;
+                 
+                
+                    
+                
                 break;
         }
     }    
