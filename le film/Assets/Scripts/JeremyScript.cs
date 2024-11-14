@@ -7,6 +7,7 @@ using Random = UnityEngine.Random;
 
 public class JeremyScript : MonoBehaviour
 {
+    [Header("References")]
     [SerializeField] SpriteRenderer sprite;
     [SerializeField] Animator jeranim;
     [SerializeField] Animator gunanim;
@@ -14,55 +15,74 @@ public class JeremyScript : MonoBehaviour
     [SerializeField] Transform player;
     [SerializeField] Rigidbody2D rb;
     [SerializeField] GameObject bullet;
-    float playerDistance;
-    [SerializeField] float targetDistance;
-    [SerializeField] float ishRange;
+    [SerializeField] CircleCollider2D circle;
+
+    [Header("Movement")]
+    [SerializeField] float entranceTime;
     [SerializeField] float moveSpeed;
     int horizontalModifier;
     int verticalDirection;
     float horizontalDirection;
+    bool hasStarted;
+    float check;
+
+    [Header("Gun")]
+    [SerializeField] float targetDistance;
+    [SerializeField] float ishRange;
+    [SerializeField] float betweenShots;
+    [SerializeField] float shootDistance;
+    float playerDistance;
     int shellsLeft;
     bool shootin;
     bool reloadin;
-    [SerializeField] float betweenShots;
-    [SerializeField] float shootDistance;
-    public float check;
-    
+    float reloadRotation;
+    Vector2 reloadPosition;
+
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(changeDirection());
+        hasStarted = false;
+        StartCoroutine(doStart());
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!reloadin)
+        if (hasStarted)
         {
-            playerDistance = Vector2.Distance(player.position, transform.position);
-            if (playerDistance > targetDistance + ishRange)
+            if (!reloadin)
             {
-                verticalDirection = 1;
-                horizontalModifier = 1;
-            }
-            else if (playerDistance < targetDistance - ishRange)
-            {
-                verticalDirection = -1;
-                horizontalModifier = 0;
+                playerDistance = Vector2.Distance(player.position, transform.position);
+                if (playerDistance > targetDistance + ishRange)
+                {
+                    verticalDirection = 1;
+                    horizontalModifier = 1;
+                }
+                else if (playerDistance < targetDistance - ishRange)
+                {
+                    verticalDirection = -1;
+                    horizontalModifier = 0;
+                }
+                else
+                {
+                    verticalDirection = 0;
+                    horizontalModifier = 2;
+                }
+                if (playerDistance < shootDistance)
+                {
+                    shoot();
+                }
+                turn();
+
             }
             else
             {
-                verticalDirection = 0;
-                horizontalModifier = 2;
+                rb.rotation = reloadRotation;
+                transform.position = reloadPosition;
             }
-            if (playerDistance < shootDistance)
-            {
-                shoot();
-            }
-            turn();
-            move();
-            animate();
         }
+        move();
+        animate();
         jeremy.position = transform.position;
     }
     void turn()
@@ -124,6 +144,15 @@ public class JeremyScript : MonoBehaviour
             }
         }
     }
+    IEnumerator doStart()
+    {
+        yield return new WaitForSeconds(entranceTime-1.5f);
+        verticalDirection = 1;
+        yield return new WaitForSeconds(1.5f);
+        StartCoroutine(changeDirection());
+        circle.isTrigger = false;
+        hasStarted = true;
+    }
     IEnumerator shooting()
     {
         shootin = true;
@@ -137,6 +166,8 @@ public class JeremyScript : MonoBehaviour
     }
     IEnumerator reload()
     {
+        reloadRotation = rb.rotation;
+        reloadPosition = transform.position;
         AudioManager.Play("reload");
         reloadin = true;
         yield return new WaitForSeconds(2.5f);
