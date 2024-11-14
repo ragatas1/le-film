@@ -19,6 +19,7 @@ public class JeremyScript : MonoBehaviour
 
     [Header("Movement")]
     [SerializeField] float entranceTime;
+    [SerializeField] float stopTime;
     [SerializeField] float moveSpeed;
     int horizontalModifier;
     int verticalDirection;
@@ -149,9 +150,23 @@ public class JeremyScript : MonoBehaviour
         yield return new WaitForSeconds(entranceTime-1.5f);
         verticalDirection = 1;
         yield return new WaitForSeconds(1.5f);
-        StartCoroutine(changeDirection());
-        circle.isTrigger = false;
         hasStarted = true;
+        StartCoroutine(changeDirection());
+        StartCoroutine(stopShooting());
+        circle.isTrigger = false;
+    }
+    IEnumerator stopShooting()
+    {
+        yield return new WaitForSeconds(stopTime - entranceTime);
+        verticalDirection = 0;
+        hasStarted = false;
+        reloadRotation = rb.rotation;
+        reloadPosition = transform.position;
+        reloadin = true;
+        horizontalDirection = 0;
+        StopCoroutine(changeDirection());
+        StopCoroutine(shooting());
+        AudioManager.Stop("reload");
     }
     IEnumerator shooting()
     {
@@ -179,6 +194,9 @@ public class JeremyScript : MonoBehaviour
     {
         horizontalDirection = Random.Range(-1f, 1f);
         yield return new WaitForSeconds(2);
-        StartCoroutine(changeDirection());
+        if (hasStarted)
+        {
+            StartCoroutine(changeDirection());
+        }
     }
 }
