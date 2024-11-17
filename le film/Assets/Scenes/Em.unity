@@ -923,9 +923,11 @@ MonoBehaviour:
   rb: {fileID: 1008207641}
   bullet: {fileID: 7316625942071012058, guid: 3446c8dd571aacc45be291c1f697bcd3, type: 3}
   circle: {fileID: 1008207643}
+  quiz: {fileID: 1973084608}
   entranceTime: 45
   stopTime: 148
   moveSpeed: 0.1
+  timeTilQuiz: 180
   targetDistance: 3
   ishRange: 0.5
   betweenShots: 1
@@ -1661,6 +1663,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1973084608 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4653646621503938403, guid: 5a6b8a004c6aede4b897aa1d22fa6186, type: 3}
+  m_PrefabInstance: {fileID: 8883686012928228606}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aefc4387366dd98459c9a3499537460d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2122812500
 GameObject:
   m_ObjectHideFlags: 0
@@ -1848,6 +1861,63 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &8883686012928228606
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1651280464740044410, guid: 5a6b8a004c6aede4b897aa1d22fa6186, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.047486376
+      objectReference: {fileID: 0}
+    - target: {fileID: 1651280464740044410, guid: 5a6b8a004c6aede4b897aa1d22fa6186, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.9621649
+      objectReference: {fileID: 0}
+    - target: {fileID: 1651280464740044410, guid: 5a6b8a004c6aede4b897aa1d22fa6186, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.089287795
+      objectReference: {fileID: 0}
+    - target: {fileID: 1651280464740044410, guid: 5a6b8a004c6aede4b897aa1d22fa6186, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1651280464740044410, guid: 5a6b8a004c6aede4b897aa1d22fa6186, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1651280464740044410, guid: 5a6b8a004c6aede4b897aa1d22fa6186, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1651280464740044410, guid: 5a6b8a004c6aede4b897aa1d22fa6186, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1651280464740044410, guid: 5a6b8a004c6aede4b897aa1d22fa6186, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1651280464740044410, guid: 5a6b8a004c6aede4b897aa1d22fa6186, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1651280464740044410, guid: 5a6b8a004c6aede4b897aa1d22fa6186, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3104068172896764123, guid: 5a6b8a004c6aede4b897aa1d22fa6186, type: 3}
+      propertyPath: m_Name
+      value: QuizObject
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5a6b8a004c6aede4b897aa1d22fa6186, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1866,3 +1936,4 @@ SceneRoots:
   - {fileID: 1829486971}
   - {fileID: 262406432}
   - {fileID: 1933713851}
+  - {fileID: 8883686012928228606}

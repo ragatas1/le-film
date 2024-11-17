@@ -16,11 +16,13 @@ public class JeremyScript : MonoBehaviour
     [SerializeField] Rigidbody2D rb;
     [SerializeField] GameObject bullet;
     [SerializeField] CircleCollider2D circle;
+    [SerializeField] QuizManager quiz;
 
     [Header("Movement")]
     [SerializeField] float entranceTime;
     [SerializeField] float stopTime;
     [SerializeField] float moveSpeed;
+    [SerializeField] float timeTilQuiz;
     int horizontalModifier;
     int verticalDirection;
     float horizontalDirection;
@@ -44,6 +46,7 @@ public class JeremyScript : MonoBehaviour
     {
         hasStarted = false;
         StartCoroutine(doStart());
+        StartCoroutine(Quiz());
     }
 
     // Update is called once per frame
@@ -159,7 +162,7 @@ public class JeremyScript : MonoBehaviour
     {
         yield return new WaitForSeconds(stopTime - entranceTime);
         verticalDirection = 0;
-        hasStarted = false;
+        //hasStarted = false;
         reloadRotation = rb.rotation;
         reloadPosition = transform.position;
         reloadin = true;
@@ -169,6 +172,11 @@ public class JeremyScript : MonoBehaviour
         AudioManager.Stop("reload");
         rb.rotation = reloadRotation;
         transform.position = reloadPosition;
+    }
+    IEnumerator Quiz()
+    {
+        yield return new WaitForSeconds(timeTilQuiz);
+        quiz.LoadScene();
     }
     IEnumerator shooting()
     {

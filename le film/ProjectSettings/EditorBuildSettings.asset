@@ -8,4 +8,49 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
+    path: Assets/Scenes/Em.unity
+    guid: 64d270c6bf2dcc046919a8945cc77558
+  - enabled: 1
+    path: Assets/Scenes/quiz/q12.unity
+    guid: 6f8cb3f307d9030438d279076bf67d68
+  - enabled: 1
+    path: Assets/Scenes/quiz/q13.unity
+    guid: 3b349546ad8c4ce4b8e5a94a375edd54
+  - enabled: 1
+    path: Assets/Scenes/quiz/q11.unity
+    guid: 69d07569b9b901140aabae419ade3329
+  - enabled: 1
+    path: Assets/Scenes/quiz/q10.unity
+    guid: d66458774b404f4468238590501bb34e
+  - enabled: 1
+    path: Assets/Scenes/quiz/q9.unity
+    guid: 71908cbf05c8e1e478141ad80e302ce6
+  - enabled: 1
+    path: Assets/Scenes/quiz/q8.unity
+    guid: d076a88653a18104c8b8103fb38fb90b
+  - enabled: 1
+    path: Assets/Scenes/quiz/q7.unity
+    guid: 4b2d5739c8a39c94aae3466edf5e5568
+  - enabled: 1
+    path: Assets/Scenes/quiz/q6.unity
+    guid: d828a258efb06b84da78ed450f3af6a4
+  - enabled: 1
+    path: Assets/Scenes/quiz/q4.unity
+    guid: 8c9852327b9788445a48fd909651630e
+  - enabled: 1
+    path: Assets/Scenes/quiz/q5.unity
+    guid: eab32cc06fd4a3340b48347396a58b5e
+  - enabled: 1
+    path: Assets/Scenes/quiz/q1.unity
+    guid: a5c333400be3bc2439da600207030850
+  - enabled: 1
+    path: Assets/Scenes/quiz/q2.unity
+    guid: 1a9db848d0f113944aa512792f4d645d
+  - enabled: 1
+    path: Assets/Scenes/quiz/q3.unity
+    guid: 0433a48f035236b41a59a622becf11b3
+  - enabled: 1
+    path: Assets/Scenes/win.unity
+    guid: 053937d423303254ab71d1bb73f43a55
   m_configObjects: {}

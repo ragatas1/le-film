@@ -33,7 +33,7 @@ public class BulletScript : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             Debug.Log("shot");
-            //SceneManager.LoadScene(scene);
+            SceneManager.LoadScene(scene);
         }
     }
     IEnumerator die()
