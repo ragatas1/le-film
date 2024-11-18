@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bf1ec85f3d4a29498292a1980f05b9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scene: Em
+  scene: StartScene
   rb: {fileID: 5302760792845882545}
   speed: 2000
   deathDistance: 7
