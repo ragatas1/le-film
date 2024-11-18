@@ -9,7 +9,7 @@ public class StartScript : MonoBehaviour
     [SerializeField] string scene;
     void Update()
     {
-        if (Input.GetButtonDown("button"))
+        if (Input.GetButtonDown(button))
         {
             SceneManager.LoadScene(scene);
         }
