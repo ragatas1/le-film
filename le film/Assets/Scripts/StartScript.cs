@@ -5,10 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class StartScript : MonoBehaviour
 {
+    [SerializeField] string button = "roll";
     [SerializeField] string scene;
     void Update()
     {
-        if (Input.GetButtonDown("roll"))
+        if (Input.GetButtonDown("button"))
         {
             SceneManager.LoadScene(scene);
         }
