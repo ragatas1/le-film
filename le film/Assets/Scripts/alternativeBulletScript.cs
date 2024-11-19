@@ -1,45 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class BulletScript : MonoBehaviour
+public class alternativeBulletScript : MonoBehaviour
 {
-    public string scene;
-    [SerializeField] Rigidbody2D rb;
-    [SerializeField] float speed;
-    Vector2 spawnPosition;
-    float distance;
-    [SerializeField] float deathDistance;
-    GameObject tid;
-    aliveLengthScript tidScript;
     GameObject jeremy;
     JeremyScript jeremyScript;
+    GameObject tid;
+    aliveLengthScript tidScript;
     // Start is called before the first frame update
     void Start()
     {
         jeremy = GameObject.FindGameObjectWithTag("jeremy");
         jeremyScript = jeremy.GetComponent<JeremyScript>();
-        rb.AddForce(transform.up*speed);
-        spawnPosition = transform.position;
-        StartCoroutine(die());
         tid = GameObject.FindGameObjectWithTag("tid");
         if (tid != null)
         {
             tidScript = tid.GetComponent<aliveLengthScript>();
         }
+        StartCoroutine(die());
+        transform.localScale = new Vector3 (0.093f*jeremyScript.shotlength,0.093f * jeremyScript.shotlength, 0.093f * jeremyScript.shotlength);
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        distance = Vector2.Distance(spawnPosition, transform.position);
-        if (distance > deathDistance)
-        {
-            Destroy(gameObject);
-        }
-    }
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
@@ -56,7 +41,7 @@ public class BulletScript : MonoBehaviour
     }
     IEnumerator die()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(jeremyScript.shotLife);
         Destroy(gameObject);
     }
 }

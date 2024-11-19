@@ -7,6 +7,7 @@ TagManager:
   - quiz
   - bullet
   - tid
+  - jeremy
   layers:
   - Default
   - TransparentFX

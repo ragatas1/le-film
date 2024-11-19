@@ -17,6 +17,8 @@ public class JeremyScript : MonoBehaviour
     [SerializeField] GameObject bullet;
     [SerializeField] CircleCollider2D circle;
     [SerializeField] QuizManager quiz;
+    public string sendeScene;
+
 
     [Header("Movement")]
     [SerializeField] float entranceTime;
@@ -34,16 +36,16 @@ public class JeremyScript : MonoBehaviour
     [SerializeField] float targetDistance;
     [SerializeField] float ishRange;
     [SerializeField] float betweenShots;
-    [SerializeField] float shootDistance;
+    [SerializeField] float distanceToShoot;
     float playerDistance;
     int shellsLeft;
     bool shootin;
     bool standingStill;
     float standingRotation;
     Vector2 standingPosition;
-    [SerializeField] string sendeScene;
-    GameObject bull;
-    BulletScript bullScript;
+    public float shotlength;
+    public float shotLife;
+    int shotsFired;
 
     // Start is called before the first frame update
     void Start()
@@ -76,7 +78,7 @@ public class JeremyScript : MonoBehaviour
                     verticalDirection = 0;
                     horizontalModifier = 2;
                 }
-                if (playerDistance < shootDistance)
+                if (playerDistance < distanceToShoot)
                 {
                     shoot();
                 }
@@ -182,6 +184,7 @@ public class JeremyScript : MonoBehaviour
         AudioManager.Stop("reload");
         rb.rotation = standingRotation;
         transform.position = standingPosition;
+        Debug.Log(shotsFired + " shots fired");
     }
     IEnumerator Quiz()
     {
@@ -197,13 +200,13 @@ public class JeremyScript : MonoBehaviour
         keepTurning = true;
         standingStill = true;
         AudioManager.Play("cock");
-        yield return new WaitForSeconds(0.68f);
-        Instantiate(bullet, transform.position, transform.rotation);
-        bull = GameObject.FindGameObjectWithTag("bullet");
-        bullScript = bull.GetComponent<BulletScript>();
-        bullScript.scene = sendeScene;
-        AudioManager.Play("shoot");
+        yield return new WaitForSeconds(0.58f);
+        standingRotation = rb.rotation;
         keepTurning = false;
+        yield return new WaitForSeconds(0.1f);
+        Instantiate(bullet, transform.position, transform.rotation);
+        shotsFired = shotsFired + 1;
+        AudioManager.Play("shoot");
         shootin = false;
         standingStill = false;
     }
