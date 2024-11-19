@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
         Normal,
         Rolling,
     }
-    public float moveSpeed = 5f;
+    public float moveSpeed = 10f;
 
     public Rigidbody2D rb;
     public Animator anim;
@@ -22,7 +22,7 @@ public class PlayerMovement : MonoBehaviour
     float rollSpeed;
     public float rollingSpeed;
     Vector2 movement;
-    
+    [SerializeField] private Cooldown rollCooldown;
 
     // Update is called once per frame
 
@@ -48,12 +48,21 @@ public class PlayerMovement : MonoBehaviour
                 {
                     anim.SetBool("Walking", false);
                 }
-
+                if (rollCooldown.IsCoolingDown)
+                {
+                    moveSpeed = 0f;
+                }
+                else
+                { 
+                    moveSpeed = 10f; 
+                }
                 if (Input.GetButtonDown("roll"))
                 {
+                    if (rollCooldown.IsCoolingDown) return;
                     rollDir = new Vector2(movement.x, movement.y).normalized;
                     rollSpeed = rollingSpeed;
                     state = State.Rolling;
+                    rollCooldown.StartCooldown();
 
                 }
                 else
@@ -87,7 +96,9 @@ public class PlayerMovement : MonoBehaviour
                 rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
                 break;
             case State.Rolling:
+                
                 rb.velocity = rollDir * rollSpeed;
+                
                  
                 
                     
