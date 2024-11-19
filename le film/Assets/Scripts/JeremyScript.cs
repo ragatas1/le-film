@@ -38,6 +38,7 @@ public class JeremyScript : MonoBehaviour
     [SerializeField] float betweenShots;
     [SerializeField] float distanceToShoot;
     [SerializeField] float hesitation;
+    bool stop;
     float playerDistance;
     int shellsLeft;
     bool shootin;
@@ -144,19 +145,22 @@ public class JeremyScript : MonoBehaviour
     }
     void shoot()
     {
-        if (!shootin)
+        if (!stop)
         {
-            if (shellsLeft > 0)
+            if (!shootin)
             {
-
-                StartCoroutine(shooting());
-
-            }
-            else
-            {
-                if (!standingStill)
+                if (shellsLeft > 0)
                 {
-                    StartCoroutine(reload());
+
+                    StartCoroutine(shooting());
+
+                }
+                else
+                {
+                    if (!standingStill)
+                    {
+                        StartCoroutine(reload());
+                    }
                 }
             }
         }

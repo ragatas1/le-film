@@ -155,7 +155,7 @@ GameObject:
   - component: {fileID: 9164779365293495345}
   m_Layer: 0
   m_Name: jeremy
-  m_TagString: Untagged
+  m_TagString: jeremy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -245,18 +245,21 @@ MonoBehaviour:
   jeremy: {fileID: 1678575529001676371}
   player: {fileID: 0}
   rb: {fileID: 8548972616377367080}
-  bullet: {fileID: 7316625942071012058, guid: 3446c8dd571aacc45be291c1f697bcd3, type: 3}
+  bullet: {fileID: 1947542565378586051, guid: d6231811ff2de4d439fc4f7eaea8861e, type: 3}
   circle: {fileID: 9164779365293495345}
   quiz: {fileID: 0}
+  sendeScene: CombatTester
   entranceTime: 0
-  stopTime: 148
-  timeTilQuiz: 180
+  stopTime: 99999
+  timeTilQuiz: 99999
   moveSpeed: 0.1
   targetDistance: 3
   ishRange: 0.5
   betweenShots: 1
-  shootDistance: 5
-  sendeScene: fin
+  distanceToShoot: 4
+  hesitation: 0.2
+  shotlength: 6
+  shotLife: 0.1
 --- !u!50 &8548972616377367080
 Rigidbody2D:
   serializedVersion: 4
