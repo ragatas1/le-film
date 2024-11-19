@@ -649,50 +649,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3176579314782176346, guid: 1e9a34a2e1186ff479752009ed2857d8, type: 3}
-      propertyPath: m_TagString
-      value: jeremy
-      objectReference: {fileID: 0}
-    - target: {fileID: 7438411661471680000, guid: 1e9a34a2e1186ff479752009ed2857d8, type: 3}
-      propertyPath: bullet
-      value: 
-      objectReference: {fileID: 1947542565378586051, guid: d6231811ff2de4d439fc4f7eaea8861e, type: 3}
     - target: {fileID: 7438411661471680000, guid: 1e9a34a2e1186ff479752009ed2857d8, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 1184834234}
-    - target: {fileID: 7438411661471680000, guid: 1e9a34a2e1186ff479752009ed2857d8, type: 3}
-      propertyPath: shotLife
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7438411661471680000, guid: 1e9a34a2e1186ff479752009ed2857d8, type: 3}
-      propertyPath: stopTime
-      value: 99999
-      objectReference: {fileID: 0}
-    - target: {fileID: 7438411661471680000, guid: 1e9a34a2e1186ff479752009ed2857d8, type: 3}
-      propertyPath: hesitation
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7438411661471680000, guid: 1e9a34a2e1186ff479752009ed2857d8, type: 3}
-      propertyPath: sendeScene
-      value: CombatTester
-      objectReference: {fileID: 0}
-    - target: {fileID: 7438411661471680000, guid: 1e9a34a2e1186ff479752009ed2857d8, type: 3}
-      propertyPath: shotlength
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 7438411661471680000, guid: 1e9a34a2e1186ff479752009ed2857d8, type: 3}
-      propertyPath: timeTilQuiz
-      value: 99999
-      objectReference: {fileID: 0}
-    - target: {fileID: 7438411661471680000, guid: 1e9a34a2e1186ff479752009ed2857d8, type: 3}
-      propertyPath: shootDistance
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7438411661471680000, guid: 1e9a34a2e1186ff479752009ed2857d8, type: 3}
-      propertyPath: distanceToShoot
-      value: 4
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
