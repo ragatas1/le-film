@@ -21,13 +21,14 @@ public class JeremyScript : MonoBehaviour
     [Header("Movement")]
     [SerializeField] float entranceTime;
     [SerializeField] float stopTime;
-    [SerializeField] float moveSpeed;
     [SerializeField] float timeTilQuiz;
+    [SerializeField] float moveSpeed;
     int horizontalModifier;
     int verticalDirection;
     float horizontalDirection;
     bool hasStarted;
     float check;
+    bool keepTurning;
 
     [Header("Gun")]
     [SerializeField] float targetDistance;
@@ -37,9 +38,12 @@ public class JeremyScript : MonoBehaviour
     float playerDistance;
     int shellsLeft;
     bool shootin;
-    bool reloadin;
-    float reloadRotation;
-    Vector2 reloadPosition;
+    bool standingStill;
+    float standingRotation;
+    Vector2 standingPosition;
+    [SerializeField] string sendeScene;
+    GameObject bull;
+    BulletScript bullScript;
 
     // Start is called before the first frame update
     void Start()
@@ -54,7 +58,7 @@ public class JeremyScript : MonoBehaviour
     {
         if (hasStarted)
         {
-            if (!reloadin)
+            if (!standingStill)
             {
                 playerDistance = Vector2.Distance(player.position, transform.position);
                 if (playerDistance > targetDistance + ishRange)
@@ -77,12 +81,18 @@ public class JeremyScript : MonoBehaviour
                     shoot();
                 }
                 turn();
-
             }
             else
             {
-                rb.rotation = reloadRotation;
-                transform.position = reloadPosition;
+                if (keepTurning)
+                {
+                    turn();
+                }
+                else
+                {
+                    rb.rotation = standingRotation;
+                }
+                transform.position = standingPosition;
             }
         }
         move();
@@ -123,7 +133,7 @@ public class JeremyScript : MonoBehaviour
                 sprite.sortingOrder = 2;
             }
         }
-        jeranim.SetBool("reload", reloadin);
+        jeranim.SetBool("reload", standingStill);
     }
     void move()
     {
@@ -141,7 +151,7 @@ public class JeremyScript : MonoBehaviour
             }
             else
             {
-                if (!reloadin)
+                if (!standingStill)
                 {
                     StartCoroutine(reload());
                 }
@@ -162,16 +172,16 @@ public class JeremyScript : MonoBehaviour
     {
         yield return new WaitForSeconds(stopTime - entranceTime);
         verticalDirection = 0;
-        //hasStarted = false;
-        reloadRotation = rb.rotation;
-        reloadPosition = transform.position;
-        reloadin = true;
+        standingRotation = rb.rotation;
+        standingPosition = transform.position;
+        standingStill = true;
         horizontalDirection = 0;
         StopCoroutine(changeDirection());
         StopCoroutine(shooting());
+        StopCoroutine(reload());
         AudioManager.Stop("reload");
-        rb.rotation = reloadRotation;
-        transform.position = reloadPosition;
+        rb.rotation = standingRotation;
+        transform.position = standingPosition;
     }
     IEnumerator Quiz()
     {
@@ -183,21 +193,29 @@ public class JeremyScript : MonoBehaviour
         shootin = true;
         shellsLeft = shellsLeft - 1;
         yield return new WaitForSeconds(betweenShots-0.68f/*this is the length of the shotgun cock sound*/);
+        standingPosition = transform.position;
+        keepTurning = true;
+        standingStill = true;
         AudioManager.Play("cock");
         yield return new WaitForSeconds(0.68f);
         Instantiate(bullet, transform.position, transform.rotation);
+        bull = GameObject.FindGameObjectWithTag("bullet");
+        bullScript = bull.GetComponent<BulletScript>();
+        bullScript.scene = sendeScene;
         AudioManager.Play("shoot");
+        keepTurning = false;
         shootin = false;
+        standingStill = false;
     }
     IEnumerator reload()
     {
-        reloadRotation = rb.rotation;
-        reloadPosition = transform.position;
+        standingRotation = rb.rotation;
+        standingPosition = transform.position;
         AudioManager.Play("reload");
-        reloadin = true;
+        standingStill = true;
         yield return new WaitForSeconds(2.5f);
         shellsLeft = 8;
-        reloadin = false;
+        standingStill = false;
     }
 
     IEnumerator changeDirection()

@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - quiz
+  - bullet
+  - tid
   layers:
   - Default
   - TransparentFX

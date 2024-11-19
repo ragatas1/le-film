@@ -59,4 +59,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/win.unity
     guid: 053937d423303254ab71d1bb73f43a55
+  - enabled: 1
+    path: Assets/Scenes/CombatTester.unity
+    guid: 420ba97c62e95b0439258b40dee62b7b
   m_configObjects: {}

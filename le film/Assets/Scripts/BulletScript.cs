@@ -5,18 +5,25 @@ using UnityEngine.SceneManagement;
 
 public class BulletScript : MonoBehaviour
 {
-    [SerializeField] string scene;
+    public string scene;
     [SerializeField] Rigidbody2D rb;
     [SerializeField] float speed;
     Vector2 spawnPosition;
     float distance;
     [SerializeField] float deathDistance;
+    GameObject tid;
+    aliveLengthScript tidScript;
     // Start is called before the first frame update
     void Start()
     {
         rb.AddForce(transform.up*speed);
         spawnPosition = transform.position;
         StartCoroutine(die());
+        tid = GameObject.FindGameObjectWithTag("tid");
+        if (tid != null)
+        {
+            tidScript = tid.GetComponent<aliveLengthScript>();
+        }
     }
 
     // Update is called once per frame
@@ -32,7 +39,14 @@ public class BulletScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            Debug.Log("shot");
+            if (tidScript == null)
+            {
+                Debug.Log("shot");
+            }
+            else
+            {
+                Debug.Log("alive for " + tidScript.tid + " seconds");
+            }
             SceneManager.LoadScene(scene);
         }
     }

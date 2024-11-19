@@ -45,9 +45,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
-  - name: 
-    clip: {fileID: 0}
-    volume: 0
+  - name: shoot
+    clip: {fileID: 8300000, guid: 7fcc4ec6b5a8d4e4fae68248a69a614a, type: 3}
+    volume: 0.1
+    pitch: 0
+    loop: 0
+    randomPitch: 0
+    greaterRandomPitch: 0
+    source: {fileID: 0}
+  - name: cock
+    clip: {fileID: 8300000, guid: ba2147439959bb442b78279052069255, type: 3}
+    volume: 0.1
+    pitch: 0
+    loop: 0
+    randomPitch: 0
+    greaterRandomPitch: 0
+    source: {fileID: 0}
+  - name: reload
+    clip: {fileID: 8300000, guid: 442540dea1b77f349835aa8a8f5e2568, type: 3}
+    volume: 0.1
     pitch: 0
     loop: 0
     randomPitch: 0
