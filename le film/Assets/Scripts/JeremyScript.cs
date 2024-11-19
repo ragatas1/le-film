@@ -37,6 +37,7 @@ public class JeremyScript : MonoBehaviour
     [SerializeField] float ishRange;
     [SerializeField] float betweenShots;
     [SerializeField] float distanceToShoot;
+    [SerializeField] float hesitation;
     float playerDistance;
     int shellsLeft;
     bool shootin;
@@ -196,14 +197,13 @@ public class JeremyScript : MonoBehaviour
         shootin = true;
         shellsLeft = shellsLeft - 1;
         yield return new WaitForSeconds(betweenShots-0.68f/*this is the length of the shotgun cock sound*/);
-        standingPosition = transform.position;
-        keepTurning = true;
-        standingStill = true;
+
         AudioManager.Play("cock");
-        yield return new WaitForSeconds(0.58f);
+        yield return new WaitForSeconds(0.68f-hesitation);
         standingRotation = rb.rotation;
-        keepTurning = false;
-        yield return new WaitForSeconds(0.1f);
+        standingPosition = transform.position;
+        standingStill = true;
+        yield return new WaitForSeconds(hesitation);
         Instantiate(bullet, transform.position, transform.rotation);
         shotsFired = shotsFired + 1;
         AudioManager.Play("shoot");
