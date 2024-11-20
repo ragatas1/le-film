@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Scene = UnityEngine.SceneManagement.Scene;
 
 public class QuizManager : MonoBehaviour
 {
@@ -14,6 +16,7 @@ public class QuizManager : MonoBehaviour
     int scene1;
     int scene2;
     int scene3;
+    Scene m_Scene;
     void Awake()
     {
         if (instance != null)
@@ -40,6 +43,15 @@ public class QuizManager : MonoBehaviour
             LoadScene();
         }
     }
+    private void Update()
+    {
+        m_Scene = SceneManager.GetActiveScene();
+        if (m_Scene.name == "StartScene")
+        {
+            Debug.Log("start");
+            questions = 0;
+        }
+    }
     public void LoadScene() 
     {
         scene = Random.Range(minScene, maxScene+1);
@@ -54,5 +66,6 @@ public class QuizManager : MonoBehaviour
             if (questions == 3) { scene3 = scene; }
             SceneManager.LoadScene(scene);
         }
+
     }
 }

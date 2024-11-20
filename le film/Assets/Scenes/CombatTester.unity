@@ -392,10 +392,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5870135057713968443, guid: d2fc13447de3cd0489a88d20157011b7, type: 3}
-      propertyPath: rollCooldown.cooldownTime
-      value: 0.4
-      objectReference: {fileID: 0}
     - target: {fileID: 8064989759678353188, guid: d2fc13447de3cd0489a88d20157011b7, type: 3}
       propertyPath: m_Name
       value: Oswalt
@@ -653,6 +649,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1184834234}
+    - target: {fileID: 7438411661471680000, guid: 1e9a34a2e1186ff479752009ed2857d8, type: 3}
+      propertyPath: hesitation
+      value: 0.1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -974,6 +974,10 @@ PrefabInstance:
     - target: {fileID: 1947542565378586051, guid: d6231811ff2de4d439fc4f7eaea8861e, type: 3}
       propertyPath: m_Name
       value: Untitled pillar
+      objectReference: {fileID: 0}
+    - target: {fileID: 1947542565378586051, guid: d6231811ff2de4d439fc4f7eaea8861e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8293789452994496479, guid: d6231811ff2de4d439fc4f7eaea8861e, type: 3}
       propertyPath: m_LocalPosition.x

@@ -1854,7 +1854,15 @@ PrefabInstance:
       objectReference: {fileID: 2122812506}
     - target: {fileID: 7438411661471680000, guid: 1e9a34a2e1186ff479752009ed2857d8, type: 3}
       propertyPath: stopTime
-      value: 147
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7438411661471680000, guid: 1e9a34a2e1186ff479752009ed2857d8, type: 3}
+      propertyPath: hesitation
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7438411661471680000, guid: 1e9a34a2e1186ff479752009ed2857d8, type: 3}
+      propertyPath: sendeScene
+      value: fin
       objectReference: {fileID: 0}
     - target: {fileID: 7438411661471680000, guid: 1e9a34a2e1186ff479752009ed2857d8, type: 3}
       propertyPath: timeTilQuiz
@@ -1862,7 +1870,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7438411661471680000, guid: 1e9a34a2e1186ff479752009ed2857d8, type: 3}
       propertyPath: entranceTime
-      value: 45
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
