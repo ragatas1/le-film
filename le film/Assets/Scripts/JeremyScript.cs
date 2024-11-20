@@ -48,6 +48,9 @@ public class JeremyScript : MonoBehaviour
     public float shotlength;
     public float shotLife;
     int shotsFired;
+    int reloadRandom;
+    [SerializeField] int reloadRandomSize;
+    bool stopShoot;
 
     // Start is called before the first frame update
     void Start()
@@ -62,44 +65,47 @@ public class JeremyScript : MonoBehaviour
     {
         if (hasStarted)
         {
-            if (!standingStill)
+            if (!stopShoot)
             {
-                playerDistance = Vector2.Distance(player.position, transform.position);
-                if (playerDistance > targetDistance + ishRange)
+                if (!standingStill)
                 {
-                    verticalDirection = 1;
-                    horizontalModifier = 1;
-                }
-                else if (playerDistance < targetDistance - ishRange)
-                {
-                    verticalDirection = -1;
-                    horizontalModifier = 0;
-                }
-                else
-                {
-                    verticalDirection = 0;
-                    horizontalModifier = 2;
-                }
-                if (playerDistance < distanceToShoot)
-                {
-                    shoot();
-                }
-                turn();
-            }
-            else
-            {
-                if (keepTurning)
-                {
+                    playerDistance = Vector2.Distance(player.position, transform.position);
+                    if (playerDistance > targetDistance + ishRange)
+                    {
+                        verticalDirection = 1;
+                        horizontalModifier = 1;
+                    }
+                    else if (playerDistance < targetDistance - ishRange)
+                    {
+                        verticalDirection = -1;
+                        horizontalModifier = 0;
+                    }
+                    else
+                    {
+                        verticalDirection = 0;
+                        horizontalModifier = 2;
+                    }
+                    if (playerDistance < distanceToShoot)
+                    {
+                        shoot();
+                    }
                     turn();
                 }
                 else
                 {
-                    rb.rotation = standingRotation;
+                    if (keepTurning)
+                    {
+                        turn();
+                    }
+                    else
+                    {
+                        rb.rotation = standingRotation;
+                    }
+                    transform.position = standingPosition;
                 }
-                transform.position = standingPosition;
             }
+            move();
         }
-        move();
         animate();
         jeremy.position = transform.position;
     }
@@ -168,6 +174,7 @@ public class JeremyScript : MonoBehaviour
     IEnumerator doStart()
     {
         yield return new WaitForSeconds(entranceTime-1.5f);
+        AudioManager.Play("entrance clip");
         verticalDirection = 1;
         yield return new WaitForSeconds(1.5f);
         hasStarted = true;
@@ -182,6 +189,7 @@ public class JeremyScript : MonoBehaviour
         standingRotation = rb.rotation;
         standingPosition = transform.position;
         standingStill = true;
+        stopShoot = true;
         horizontalDirection = 0;
         StopCoroutine(changeDirection());
         StopCoroutine(shooting());
@@ -198,31 +206,38 @@ public class JeremyScript : MonoBehaviour
     }
     IEnumerator shooting()
     {
-        shootin = true;
-        shellsLeft = shellsLeft - 1;
-        yield return new WaitForSeconds(betweenShots-0.68f/*this is the length of the shotgun cock sound*/);
+        if (!stopShoot)
+        {
+            shootin = true;
+            shellsLeft = shellsLeft - 1;
+            yield return new WaitForSeconds(betweenShots - 0.68f/*this is the length of the shotgun cock sound*/);
 
-        AudioManager.Play("cock");
-        yield return new WaitForSeconds(0.68f-hesitation);
-        standingRotation = rb.rotation;
-        standingPosition = transform.position;
-        standingStill = true;
-        yield return new WaitForSeconds(hesitation);
-        Instantiate(bullet, transform.position, transform.rotation);
-        shotsFired = shotsFired + 1;
-        AudioManager.Play("shoot");
-        shootin = false;
-        standingStill = false;
+            AudioManager.Play("cock");
+            yield return new WaitForSeconds(0.68f - hesitation);
+            standingRotation = rb.rotation;
+            standingPosition = transform.position;
+            standingStill = true;
+            yield return new WaitForSeconds(hesitation);
+            Instantiate(bullet, transform.position, transform.rotation);
+            shotsFired = shotsFired + 1;
+            AudioManager.Play("shoot");
+            shootin = false;
+            standingStill = false;
+        }
     }
     IEnumerator reload()
     {
-        standingRotation = rb.rotation;
-        standingPosition = transform.position;
-        AudioManager.Play("reload");
-        standingStill = true;
-        yield return new WaitForSeconds(2.5f);
-        shellsLeft = 8;
-        standingStill = false;
+        if (!stopShoot)
+        {
+            standingRotation = rb.rotation;
+            standingPosition = transform.position;
+            AudioManager.Play("reload");
+            ReloadBanter();
+            standingStill = true;
+            yield return new WaitForSeconds(2.5f);
+            shellsLeft = 8;
+            standingStill = false;
+        }
     }
 
     IEnumerator changeDirection()
@@ -233,5 +248,10 @@ public class JeremyScript : MonoBehaviour
         {
             StartCoroutine(changeDirection());
         }
+    }
+    void ReloadBanter()
+    {
+        reloadRandom = Random.Range(1, reloadRandomSize+1);
+        AudioManager.Play("reload " + reloadRandom);
     }
 }
