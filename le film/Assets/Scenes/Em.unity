@@ -501,6 +501,14 @@ PrefabInstance:
       value: AudioManager
       objectReference: {fileID: 0}
     - target: {fileID: 2922131210061116552, guid: 99af0be8edddd4cc7917141eb07c2864, type: 3}
+      propertyPath: sounds.Array.data[1].volume
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2922131210061116552, guid: 99af0be8edddd4cc7917141eb07c2864, type: 3}
+      propertyPath: sounds.Array.data[2].volume
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2922131210061116552, guid: 99af0be8edddd4cc7917141eb07c2864, type: 3}
       propertyPath: sounds.Array.data[13].volume
       value: 0.5
       objectReference: {fileID: 0}
