@@ -4,15 +4,22 @@ using UnityEngine;
 
 public class rollSoundScript : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] int numberOfClips;
+    int sound;
+    [SerializeField] JeremyScript jerry;
+    private void Update()
     {
-        
+        if (Input.GetButtonDown("roll"))
+        {
+            RollSound();
+        }
     }
-
-    // Update is called once per frame
-    void Update()
+    void RollSound()
     {
-        
+        if (jerry.danger)
+        {
+            sound = Random.Range(1, numberOfClips + 1);
+            AudioManager.Play("roll " + sound);
+        }
     }
 }

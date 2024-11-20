@@ -48,7 +48,7 @@ MonoBehaviour:
   - name: shoot
     clip: {fileID: 8300000, guid: 7fcc4ec6b5a8d4e4fae68248a69a614a, type: 3}
     volume: 0.1
-    pitch: 0
+    pitch: 0.1
     loop: 0
     randomPitch: 0
     greaterRandomPitch: 0
@@ -65,6 +65,262 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 442540dea1b77f349835aa8a8f5e2568, type: 3}
     volume: 0.1
     pitch: 0
+    loop: 0
+    randomPitch: 0
+    greaterRandomPitch: 0
+    source: {fileID: 0}
+  - name: entrance clip
+    clip: {fileID: 8300000, guid: 534a2a17c3981174f832b13a9a4bf633, type: 3}
+    volume: 1
+    pitch: 0.1
+    loop: 0
+    randomPitch: 0
+    greaterRandomPitch: 0
+    source: {fileID: 0}
+  - name: reload 1
+    clip: {fileID: 8300000, guid: 25a4fae709fc4974c816c7b24cf56b89, type: 3}
+    volume: 1
+    pitch: 0
+    loop: 0
+    randomPitch: 0
+    greaterRandomPitch: 0
+    source: {fileID: 0}
+  - name: reload 2
+    clip: {fileID: 8300000, guid: c07433d6a4c4c1b4ebb1517ed9c1dfa0, type: 3}
+    volume: 1
+    pitch: 0
+    loop: 0
+    randomPitch: 0
+    greaterRandomPitch: 0
+    source: {fileID: 0}
+  - name: reload 3
+    clip: {fileID: 8300000, guid: 391da1c5a6bf06d439f8394c38e168ef, type: 3}
+    volume: 1
+    pitch: 0
+    loop: 0
+    randomPitch: 0
+    greaterRandomPitch: 0
+    source: {fileID: 0}
+  - name: reload 4
+    clip: {fileID: 8300000, guid: 59f07a24666392e4396bd85fa99fdb07, type: 3}
+    volume: 1
+    pitch: 0.1
+    loop: 0
+    randomPitch: 0
+    greaterRandomPitch: 0
+    source: {fileID: 0}
+  - name: reload 5
+    clip: {fileID: 8300000, guid: b8fcbad1204b0044fbc4c82528b295a3, type: 3}
+    volume: 1
+    pitch: 0
+    loop: 0
+    randomPitch: 0
+    greaterRandomPitch: 0
+    source: {fileID: 0}
+  - name: reload 6
+    clip: {fileID: 8300000, guid: 9b839944e167fe84dac594f6442fad5a, type: 3}
+    volume: 1
+    pitch: 0
+    loop: 0
+    randomPitch: 0
+    greaterRandomPitch: 0
+    source: {fileID: 0}
+  - name: reload 7
+    clip: {fileID: 8300000, guid: 71f775733d406b347acbce67dc0f33d2, type: 3}
+    volume: 1
+    pitch: 0
+    loop: 0
+    randomPitch: 0
+    greaterRandomPitch: 0
+    source: {fileID: 0}
+  - name: reload 8
+    clip: {fileID: 8300000, guid: 7922858fc44e40849859101ef86dc536, type: 3}
+    volume: 1
+    pitch: 0
+    loop: 0
+    randomPitch: 0
+    greaterRandomPitch: 0
+    source: {fileID: 0}
+  - name: credit dialogue
+    clip: {fileID: 8300000, guid: 8c79a427739b1ce4aa27930c04f33b92, type: 3}
+    volume: 1
+    pitch: 0
+    loop: 0
+    randomPitch: 0
+    greaterRandomPitch: 0
+    source: {fileID: 0}
+  - name: roll 1
+    clip: {fileID: 8300000, guid: 0082b9e37fcb2f04aa8cfcb3deb9fab1, type: 3}
+    volume: 1
+    pitch: 0
+    loop: 0
+    randomPitch: 0
+    greaterRandomPitch: 0
+    source: {fileID: 0}
+  - name: roll 2
+    clip: {fileID: 8300000, guid: 089248abcf63fdc46a5c2ceece9e8dba, type: 3}
+    volume: 1
+    pitch: 0
+    loop: 0
+    randomPitch: 0
+    greaterRandomPitch: 0
+    source: {fileID: 0}
+  - name: roll 3
+    clip: {fileID: 8300000, guid: 4075d7a1e075a9945808872130b98864, type: 3}
+    volume: 1
+    pitch: 0
+    loop: 0
+    randomPitch: 0
+    greaterRandomPitch: 0
+    source: {fileID: 0}
+  - name: roll 4
+    clip: {fileID: 8300000, guid: 3b10ba4ef9949ae48ab5dcb8e4ddc27e, type: 3}
+    volume: 1
+    pitch: 0
+    loop: 0
+    randomPitch: 0
+    greaterRandomPitch: 0
+    source: {fileID: 0}
+  - name: roll 5
+    clip: {fileID: 8300000, guid: c07bb0ae4b26ce54389e3964a9bd79bd, type: 3}
+    volume: 1
+    pitch: 0
+    loop: 0
+    randomPitch: 0
+    greaterRandomPitch: 0
+    source: {fileID: 0}
+  - name: roll 6
+    clip: {fileID: 8300000, guid: c4986612b7a92b549ab3663e04aa9ddd, type: 3}
+    volume: 1
+    pitch: 0
+    loop: 0
+    randomPitch: 0
+    greaterRandomPitch: 0
+    source: {fileID: 0}
+  - name: roll 7
+    clip: {fileID: 8300000, guid: 3deb2c5e148aa4c43a25718d3285b4d1, type: 3}
+    volume: 1
+    pitch: 0
+    loop: 0
+    randomPitch: 0
+    greaterRandomPitch: 0
+    source: {fileID: 0}
+  - name: roll 8
+    clip: {fileID: 8300000, guid: 29035319bb53cee4c9064a29671b3c43, type: 3}
+    volume: 1
+    pitch: 0
+    loop: 0
+    randomPitch: 0
+    greaterRandomPitch: 0
+    source: {fileID: 0}
+  - name: roll 9
+    clip: {fileID: 8300000, guid: ac96ad99043804240a8d50ba15cceaf5, type: 3}
+    volume: 1
+    pitch: 0
+    loop: 0
+    randomPitch: 0
+    greaterRandomPitch: 0
+    source: {fileID: 0}
+  - name: roll 10
+    clip: {fileID: 8300000, guid: 425c4703c440bd54d8116cfb427e4b02, type: 3}
+    volume: 1
+    pitch: 0
+    loop: 0
+    randomPitch: 0
+    greaterRandomPitch: 0
+    source: {fileID: 0}
+  - name: roll 11
+    clip: {fileID: 8300000, guid: a0c9bffedc4f80942a5883ee760d4b7c, type: 3}
+    volume: 1
+    pitch: 0
+    loop: 0
+    randomPitch: 0
+    greaterRandomPitch: 0
+    source: {fileID: 0}
+  - name: roll 12
+    clip: {fileID: 8300000, guid: 5cef4ff29991813499a193a680854f48, type: 3}
+    volume: 1
+    pitch: 0
+    loop: 0
+    randomPitch: 0
+    greaterRandomPitch: 0
+    source: {fileID: 0}
+  - name: roll 13
+    clip: {fileID: 8300000, guid: e86f6b81eca688247ad98060ba47bea7, type: 3}
+    volume: 1
+    pitch: 0
+    loop: 0
+    randomPitch: 0
+    greaterRandomPitch: 0
+    source: {fileID: 0}
+  - name: roll 14
+    clip: {fileID: 8300000, guid: 5e586cd437eb111478138dea44eed314, type: 3}
+    volume: 1
+    pitch: 0
+    loop: 0
+    randomPitch: 0
+    greaterRandomPitch: 0
+    source: {fileID: 0}
+  - name: roll 15
+    clip: {fileID: 8300000, guid: 512ee267e61bb5c4bb1e069d59de0db5, type: 3}
+    volume: 1
+    pitch: 0
+    loop: 0
+    randomPitch: 0
+    greaterRandomPitch: 0
+    source: {fileID: 0}
+  - name: roll 16
+    clip: {fileID: 8300000, guid: 38f8d1cced6495448aab02e65ec5f1df, type: 3}
+    volume: 1
+    pitch: 0
+    loop: 0
+    randomPitch: 0
+    greaterRandomPitch: 0
+    source: {fileID: 0}
+  - name: roll 17
+    clip: {fileID: 8300000, guid: a67c9d694c624394bb3252fc3697158a, type: 3}
+    volume: 1
+    pitch: 0
+    loop: 0
+    randomPitch: 0
+    greaterRandomPitch: 0
+    source: {fileID: 0}
+  - name: roll 18
+    clip: {fileID: 8300000, guid: 580754026ba77de4d8182ae35b42b83a, type: 3}
+    volume: 1
+    pitch: 0
+    loop: 0
+    randomPitch: 0
+    greaterRandomPitch: 0
+    source: {fileID: 0}
+  - name: roll 19
+    clip: {fileID: 8300000, guid: 76ae977e1d86b734eb81c0017fb12b7e, type: 3}
+    volume: 1
+    pitch: 0
+    loop: 0
+    randomPitch: 0
+    greaterRandomPitch: 0
+    source: {fileID: 0}
+  - name: roll 20
+    clip: {fileID: 8300000, guid: 441199d5a1323234abad84dd328e4e5d, type: 3}
+    volume: 1
+    pitch: 0
+    loop: 0
+    randomPitch: 0
+    greaterRandomPitch: 0
+    source: {fileID: 0}
+  - name: roll 21
+    clip: {fileID: 8300000, guid: ace09e6e54fac474c8b0f14e455404aa, type: 3}
+    volume: 1
+    pitch: 0
+    loop: 0
+    randomPitch: 0
+    greaterRandomPitch: 0
+    source: {fileID: 0}
+  - name: roll 22
+    clip: {fileID: 8300000, guid: 98d6a86f8b9010d419c5191df52ca3ca, type: 3}
+    volume: 1
+    pitch: 0.1
     loop: 0
     randomPitch: 0
     greaterRandomPitch: 0

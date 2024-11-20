@@ -237,6 +237,7 @@ GameObject:
   - component: {fileID: 1147555499}
   - component: {fileID: 1147555503}
   - component: {fileID: 1147555502}
+  - component: {fileID: 1147555504}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -330,6 +331,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe035048e74e7e14da5eb39d2dbcdd53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  delay: 0
+  button: roll
   scene: Em
 --- !u!114 &1147555503
 MonoBehaviour:
@@ -375,6 +378,18 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!114 &1147555504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1147555498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c0062a639fe6e64c9f82a19da47d8ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1390403518
 GameObject:
   m_ObjectHideFlags: 0

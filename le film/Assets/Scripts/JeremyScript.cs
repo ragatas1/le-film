@@ -51,6 +51,7 @@ public class JeremyScript : MonoBehaviour
     int reloadRandom;
     [SerializeField] int reloadRandomSize;
     bool stopShoot;
+    [HideInInspector] public bool danger;
 
     // Start is called before the first frame update
     void Start()
@@ -58,6 +59,7 @@ public class JeremyScript : MonoBehaviour
         hasStarted = false;
         StartCoroutine(doStart());
         StartCoroutine(Quiz());
+        shellsLeft = 1;
     }
 
     // Update is called once per frame
@@ -104,8 +106,8 @@ public class JeremyScript : MonoBehaviour
                     transform.position = standingPosition;
                 }
             }
-            move();
         }
+        move();
         animate();
         jeremy.position = transform.position;
     }
@@ -174,8 +176,8 @@ public class JeremyScript : MonoBehaviour
     IEnumerator doStart()
     {
         yield return new WaitForSeconds(entranceTime-1.5f);
-        AudioManager.Play("entrance clip");
         verticalDirection = 1;
+        AudioManager.Play("entrance clip");
         yield return new WaitForSeconds(1.5f);
         hasStarted = true;
         StartCoroutine(changeDirection());
@@ -190,11 +192,12 @@ public class JeremyScript : MonoBehaviour
         standingPosition = transform.position;
         standingStill = true;
         stopShoot = true;
-        horizontalDirection = 0;
         StopCoroutine(changeDirection());
         StopCoroutine(shooting());
         StopCoroutine(reload());
         AudioManager.Stop("reload");
+        AudioManager.Play("credit dialogue");
+        horizontalDirection = 0;
         rb.rotation = standingRotation;
         transform.position = standingPosition;
         Debug.Log(shotsFired + " shots fired");
@@ -211,8 +214,8 @@ public class JeremyScript : MonoBehaviour
             shootin = true;
             shellsLeft = shellsLeft - 1;
             yield return new WaitForSeconds(betweenShots - 0.68f/*this is the length of the shotgun cock sound*/);
-
             AudioManager.Play("cock");
+            StartCoroutine(DangerTime());
             yield return new WaitForSeconds(0.68f - hesitation);
             standingRotation = rb.rotation;
             standingPosition = transform.position;
@@ -224,6 +227,12 @@ public class JeremyScript : MonoBehaviour
             shootin = false;
             standingStill = false;
         }
+    }
+    IEnumerator DangerTime()
+    {
+        danger = true;
+        yield return new WaitForSeconds(0.7f);
+        danger = false;
     }
     IEnumerator reload()
     {
