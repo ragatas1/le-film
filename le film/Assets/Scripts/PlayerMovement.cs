@@ -23,6 +23,8 @@ public class PlayerMovement : MonoBehaviour
     public float rollingSpeed;
     Vector2 movement;
     [SerializeField] private Cooldown rollCooldown;
+    public bool isRolling;
+    
 
     // Update is called once per frame
 
@@ -62,6 +64,13 @@ public class PlayerMovement : MonoBehaviour
                     rollDir = new Vector2(movement.x, movement.y).normalized;
                     rollSpeed = rollingSpeed;
                     state = State.Rolling;
+                    isRolling = true;
+                    
+                    
+
+                    
+                  
+
                     rollCooldown.StartCooldown();
 
                 }
@@ -77,6 +86,7 @@ public class PlayerMovement : MonoBehaviour
                 if (rollSpeed < rollspeedMinimum)
                 {
                     state = State.Normal;
+                    isRolling = false;
                 }
 
                 break;
@@ -98,13 +108,16 @@ public class PlayerMovement : MonoBehaviour
             case State.Rolling:
                 
                 rb.velocity = rollDir * rollSpeed;
-                
-                 
+
+                isRolling = true; 
                 
                     
                 
                 break;
         }
     }    
+   
+    
 
+    
 }

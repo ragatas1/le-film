@@ -11,9 +11,13 @@ public class alternativeBulletScript : MonoBehaviour
     JeremyScript jeremyScript;
     GameObject tid;
     aliveLengthScript tidScript;
+    public PlayerMovement playerMovement;
+    GameObject Player;
     // Start is called before the first frame update
     void Start()
     {
+        Player = GameObject.FindGameObjectWithTag("Player");
+        playerMovement = Player.GetComponent<PlayerMovement>();
         jeremy = GameObject.FindGameObjectWithTag("jeremy");
         jeremyScript = jeremy.GetComponent<JeremyScript>();
         tid = GameObject.FindGameObjectWithTag("tid");
@@ -26,7 +30,7 @@ public class alternativeBulletScript : MonoBehaviour
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player" && playerMovement.isRolling == false)
         {
             if (tidScript == null)
             {
