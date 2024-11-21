@@ -26,6 +26,7 @@ public class QuizAnswerChooser : MonoBehaviour
             answer = current.GetComponent<AnswerScript>();
             answer.answer();
         }
+        Debug.Log(Input.GetAxis("Vertical"));
     }
 
     void controlls()

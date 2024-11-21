@@ -107,8 +107,15 @@ public class JeremyScript : MonoBehaviour
                 }
             }
         }
-        move();
-        animate();
+        if (!stopShoot)
+        {
+            move();
+            animate();
+        }
+        else
+        {
+            rb.rotation = standingRotation;
+        }
         jeremy.position = transform.position;
     }
     void turn()
